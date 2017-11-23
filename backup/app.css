@@ -37,34 +37,13 @@ h1 {
 }
 
 /*
- * Skin
- */
-.blue {
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%); 
-    width: 80px;
-    height: 30px; 
-}
-
-.yellow {
-    background: linear-gradient(160deg, #ffef96 0%, #aa7ecd 100%);
-    width: 80px;
-    height: 30px;
-}
-
-.green {
-    background: linear-gradient(160deg, #96ceb4 0%, #aa7ecd 100%); 
-    width: 80px;
-    height: 30px; 
-}
-
-/*
  * Styles for the deck of cards
  */
 
 .deck {
     width: 450px;//660px;
     min-height: 480px;//680px;
-    /*background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);*/
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 20px;//32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -72,19 +51,30 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 0em;
+    margin: 0 0 3em;
 }
 
-.main .middle-level-style {
+.deck .middle-level-style {
     width: 920px;
     min-height: 400px;
 }
 
-.main .difficult-level-style {
+.deck .difficult-level-style {
 
 }
 
 .deck .card {
+    display: flex;
+}
+
+.deck .card .open {
+    transform: rotateY(180deg);
+    background: #02b3e4;
+    font-size: 33px;
+    cursor: default;
+}
+
+.deck .card .flipper .back {
     height: 90px;//125px;
     width: 90px;//125px;
     background: #2e3d49;
@@ -96,45 +86,113 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    /*animation*/
+    position: absolute; 
+    z-index: 2;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -o-transform: rotateY(0);
+    transform: rotateY(0);
+}
+
+.deck .card .flipper .front {
+    height: 90px;//125px;
+    width: 90px;//125px;
+    /*background: #2e3d49;*/
+    font-size: 33px;//0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.fa {
+    transform: rotateY(180deg);
+}
+
+.deck .card .flipper {
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+  
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+
     transition: 0.6s;
     transform-style: preserve-3d;
 
     position: relative;
-    transform: rotateY(0);
-    /*animation*/
+
+    /*transform: rotateY(180deg);*/
 }
 
-.deck li.middle-size {
+/*.animation {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}*/
+
+.deck .card .middle-level-style {
     height: 100px;
     width: 100px;
 }
 
-.deck li.large-size {
+.deck .card .difficult-level-style {
 
 }
 
-.deck .card.open {
-    /*animation 0 -> 180deg*/
-    transform: rotateY(180deg);
+/*.deck .back.open {
+   -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg); 
+}
+
+.deck .front.show {
+    ransform: rotateY(0);
+}*/
+
+/*.deck .card.open {
+    transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
 }
 
 .deck .card.show {
     font-size: 33px;
-}
+}*/
 
-.deck .card.match {
+.deck .card.flipper.front.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    /*font-size: 33px;*/
 }
 
-.deck .card.mismatch {
+.deck .card.flipper.front.mismatch {
     cursor: default;
     background: #ff0000;
-    font-size: 33px;
+    /*font-size: 33px;*/
 }
 
 .game-dialog {
@@ -271,52 +329,12 @@ h1 {
     display: none;
 }
 
-/*
- * footer
- */
-.footer {
-    display: flex;
-    align-items: center;
-}
-
-.footer .copyright {
-    float: left;
-}
-
-.footer .contacts {
-    float: left;
-}
-
-.contacts ul {
-    display: flex;
-    list-style: none;
-}
-
-.snsIcon {
-    margin-left: 2px;
-    margin-right: 2px;
-}
-
-/*Dialog*/
-.help-content-icon {
-    float:left;
-    margin:0 7px 50px 0;
-}
-
-.snsIcon a:hover{
-    color: #DEDEDE;
-}
-
-.snsIcon a {
-    color: #2e3d49;
-}
-
-/*for result*/
-.congratulations.show {
+// for result
+.result.show {
     display: block;
 }
 
-.congratulations {
+.result {
     display: none;
     padding: 5em;
     text-align: center;
@@ -371,58 +389,6 @@ h1 {
   position: absolute;
 }
 
-.btn-success {
-    background: #3dd28d;
-
-    overflow: hidden;
-
-    margin: 10px;
-    padding: 12px 12px;
-
-    cursor: pointer;
-    user-select: none;
-    transition: all 150ms linear;
-    text-align: center;
-    white-space: nowrap;
-    text-decoration: none !important;
-    text-transform: none;
-    text-transform: capitalize;
-
-    color: #fff;
-    border: 0 none;
-    border-radius: 4px;
-
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.3;
-
-    -webkit-appearance: none;
-    -moz-appearance:    none;
-    appearance:         none;
- 
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 160px;
-  
-    box-shadow: 2px 5px 10px #e4e4e4;
-
-    &:hover {
-        transition: all 150ms linear;
-
-        opacity: .85;
-    }
-  
-    &:active {
-        transition: all 150ms linear;
-        opacity: .75;
-    }
-  
-    &:focus {
-        outline: 1px dotted #959595;
-        outline-offset: -4px;
-    }
-}
-
 @keyframes loader-spin {
   0% {
     transform: rotate(0deg);
@@ -452,43 +418,4 @@ h1 {
     width: 2em;
     opacity: 1;
   }
-}
-
-/*responsive condition*/
-@media only screen and (max-width: 920px) {
-    .main .middle-level-style {
-        width: 600px;
-        min-height: 400px;
-    }
-
-    .deck li.middle-size {
-        height: 80px;
-        width: 80px;
-    }
-
-    .deck {
-        padding: 30px;
-    }
-}
-
-@media only screen and (max-width: 570px) {
-    h1 {
-        font-size: 1.5em;
-    }
-    .main .middle-level-style {
-        width: 450px;
-        min-height: 500px;
-    }
-
-    .deck li.middle-size {
-        height: 72px;
-        width: 72px;
-        margin-left: 3px;
-        margin-right: 3px;
-    }
-
-    .deck {
-        padding-left: 35px;
-        padding-right: 35px;
-    }
 }

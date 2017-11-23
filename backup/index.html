@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">   
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -30,7 +29,7 @@
 
             <div class="countdown">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span id="timer"></span>
+                <span id="timer">10s</span>
             </div>
             <div class="question">
                 <i class="fa fa-question-circle"></i>
@@ -56,16 +55,16 @@
                     </li> -->
                     <li><div>Theme</div>
                         <ul>
-                          <li><div id="theme-orig">Original</div></li>
-                          <li><div id="theme-money">Money</div></li>
-                          <li><div id="theme-trans">Transportation</div></li>
+                          <li><div>Original</div></li>
+                          <li><div>Money</div></li>
+                          <li><div>Transportation</div></li>
                         </ul>
                     </li>
                     <li><div>Skin</div>
                         <ul>
-                          <li><div id="skin-blue" class="blue">Blue</div></li>
-                          <li><div id="skin-yellow" class="yellow">Yellow</div></li>
-                          <li><div id="skin-green" class="green">Green</div></li>
+                          <li><div>Blue</div></li>
+                          <li><div>Yellow</div></li>
+                          <li><div>Green</div></li>
                         </ul>
                     </li>
                   <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
@@ -74,8 +73,8 @@
             <div class="mode">
                 <!-- <span>Mode:</span> -->
                 <select class="modes">
-                  <option value="0">Normal</option>
-                  <option value="1">Speed</option>
+                  <option value="Accuracy-Mode">Accuracy</option>
+                  <option value="Speed-Mode">Speed</option>
                 </select>
             </div>
             <div class="level">
@@ -83,31 +82,17 @@
                 <select class="levels">
                   <option value="0">Easy</option>
                   <option value="1">Middle</option>
-                  <option value="2" disabled>Difficult</option>
+                  <option value="2">Difficult</option>
                 </select>
             </div>
         </section>
         <section class="main">
-            <ul class="deck blue">
+            <ul class="deck">
             </ul>
         </section>
-
-        <footer class="footer">
-            <div class="copyright">
-                <i class="fa fa-copyright" aria-hidden="true"></i>
-                <span>Produced by Flyost</span>
-            </div>
-            <div class="contacts">
-                <ul>
-                    <li class="snsIcon"><a href="https://www.facebook.com/aaron.wu.7796" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                    <li class="snsIcon"><a href="https://www.facebook.com/aaron.wu.7796" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li class="snsIcon"><a href="https://www.facebook.com/aaron.wu.7796" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </footer>
     </div>
 
-    <div class="congratulations">
+    <div class="result">
         <!--check mark-->
         <div class="circle-loader">
             <div class="checkmark draw"></div>
@@ -115,37 +100,19 @@
 
 
         <h1>Congratulations! You Won!</h1>
-        <div class="result"></div>
-        <!-- <p>With x moves and x stars</p> -->
+        <p>With x moves and x stars</p>
         <p>Woooooo!</p>
         <p><button id="toggle" type="button" class="btn btn-success">Play again!</button></p>
     </div>
 
-    <div style="display: none">
-        <div id="dialog-message" class="helper" title="Game Help">
-            <p>
-                <span class="ui-icon ui-icon-circle-check help-content-icon"></span>
-                Reveal the images behind the cover just like flopping, if two exposed images(one pair) is the same, then keep the exposed, otherwise cover them again.
-            </p>
-            <hr>
-            <p>
-                <span class="ui-icon ui-icon-circle-check help-content-icon"></span>
-                You can set different modes and levels to challenge, regarding normal mode, there are 3 chances average for each pair, and for speed mode, 30s is provided for the challenge.
-            </p>
-            <hr>
-            <p>
-                <span class="ui-icon ui-icon-circle-check help-content-icon"></span>
-                Currently 3 sets of images are provided, you can change the images through theme setting.
-            </p>
-            <hr>
-            <p>
-                Note: More function is under development, in future, more rules will be supported.
-                      BTW, You can also change skin by skin setting.
-            </p>
-        </div>
-        <div id="dialog-message" class="retry" title="Retry Again">
-            <p class="retry-message"></p>
-        </div>
+    <div id="dialog-message" title="Game Help">
+      <p>
+        <!-- <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span> -->
+        Your files have downloaded successfully into the My Downloads folder.
+      </p>
+      <p>
+        what's going to do
+      </p>
     </div>
 
     <script src="js/app.js"></script>
